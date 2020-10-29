@@ -36,4 +36,9 @@ public class Funciones {
         return false;
     }
     
+    public static double obtenerTiempoEjecucion(long startTime, long stopTime) {
+        
+        double totalTime = stopTime - startTime;
+        return totalTime / 1000.0;
+    }
 }
