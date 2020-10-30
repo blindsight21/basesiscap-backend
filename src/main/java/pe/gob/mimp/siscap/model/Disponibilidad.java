@@ -39,7 +39,7 @@ public class Disponibilidad implements Serializable {
     private BigInteger nidFuncionalidad;
 
     @Column(name = "FLG_DISPONIBILIDAD")
-    private BigDecimal flgDisponibilidad;
+    private BigInteger flgDisponibilidad;
 
     @Column(name = "FLG_ACTIVO")
     private BigInteger flgActivo;
@@ -80,11 +80,11 @@ public class Disponibilidad implements Serializable {
         this.nidFuncionalidad = nidFuncionalidad;
     }
 
-    public BigDecimal getFlgDisponibilidad() {
+    public BigInteger getFlgDisponibilidad() {
         return flgDisponibilidad;
     }
 
-    public void setFlgDisponibilidad(BigDecimal flgDisponibilidad) {
+    public void setFlgDisponibilidad(BigInteger flgDisponibilidad) {
         this.flgDisponibilidad = flgDisponibilidad;
     }
 
