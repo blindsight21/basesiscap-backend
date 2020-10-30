@@ -20,14 +20,15 @@ import pe.gob.mimp.siscap.util.Funciones;
  *
  * @author Omar
  */
-public class DisponibilidadRepositoryImpl implements CustomDisponibilidadRepository{
+public class DisponibilidadRepositoryImpl implements CustomDisponibilidadRepository {
+
     @PersistenceContext(unitName = Constantes.NOMBRE_ENTITY_MANAGER)
     EntityManager entityManager;
 
     public EntityManager getEntityManager() {
         return entityManager;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Disponibilidad> findByParams(Map<String, Object> parameters, String orderBy) {
@@ -49,7 +50,6 @@ public class DisponibilidadRepositoryImpl implements CustomDisponibilidadReposit
         String hql = selectClause + whereClause + orderClause;
 
 //        logger.info("   SISCAP HQL: " + hql);
-
         Query q = getEntityManager().createQuery(hql);
         for (Map.Entry<String, Object> map : parameters.entrySet()) {
             q.setParameter(map.getKey(), map.getValue());
@@ -71,7 +71,6 @@ public class DisponibilidadRepositoryImpl implements CustomDisponibilidadReposit
         String hql = selectClause + whereClause;
 
 //        logger.info("getRecordCount HQL: " + hql);
-
         Query q = getEntityManager().createQuery(hql);
 
         for (Map.Entry<String, Object> map : parameters.entrySet()) {
@@ -93,9 +92,13 @@ public class DisponibilidadRepositoryImpl implements CustomDisponibilidadReposit
         if (parameters.get("nidDisponibilidad") != null) {
             whereClause = whereClause + "d.nidDisponibilidad = :nidDisponibilidad";
         }
-        if (parameters.get("txtDisponibilidad") != null) {
+        if (parameters.get("nidFuncionalidad") != null) {
             whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
-            whereClause = whereClause + "d.txtDisponibilidad = :txtDisponibilidad";
+            whereClause = whereClause + "d.nidFuncionalidad = :nidFuncionalidad";
+        }
+        if (parameters.get("flgDisponibilidad") != null) {
+            whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
+            whereClause = whereClause + "d.flgDisponibilidad = :flgDisponibilidad";
         }
         if (parameters.get("nidUsuario") != null) {
             whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
@@ -104,6 +107,10 @@ public class DisponibilidadRepositoryImpl implements CustomDisponibilidadReposit
         if (parameters.get("flgActivo") != null) {
             whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
             whereClause = whereClause + "d.flgActivo = :flgActivo";
+        }
+        if (parameters.get("fecRegistro") != null) {
+            whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
+            whereClause = whereClause + "d.fecRegistro = :fecRegistro";
         }
 
         return whereClause;
