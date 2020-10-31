@@ -35,11 +35,19 @@ public class Disponibilidad implements Serializable {
     @Column(name = "NID_DISPONIBILIDAD")
     private BigDecimal nidDisponibilidad;
 
+    @Column(name = "FEC_DISPONIBLE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecDisponible;
+
+    @Column(name = "FEC_NO_DISPONIBLE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecNoDisponible;
+
+    @Column(name = "NUM_TIEMPO_MEDIO")
+    private BigInteger numTiempoMedio;
+
     @Column(name = "NID_FUNCIONALIDAD")
     private BigInteger nidFuncionalidad;
-
-    @Column(name = "FLG_DISPONIBILIDAD")
-    private BigInteger flgDisponibilidad;
 
     @Column(name = "FLG_ACTIVO")
     private BigInteger flgActivo;
@@ -72,20 +80,36 @@ public class Disponibilidad implements Serializable {
         this.nidDisponibilidad = nidDisponibilidad;
     }
 
+    public Date getFecDisponible() {
+        return fecDisponible;
+    }
+
+    public void setFecDisponible(Date fecDisponible) {
+        this.fecDisponible = fecDisponible;
+    }
+
+    public Date getFecNoDisponible() {
+        return fecNoDisponible;
+    }
+
+    public void setFecNoDisponible(Date fecNoDisponible) {
+        this.fecNoDisponible = fecNoDisponible;
+    }
+
+    public BigInteger getNumTiempoMedio() {
+        return numTiempoMedio;
+    }
+
+    public void setNumTiempoMedio(BigInteger numTiempoMedio) {
+        this.numTiempoMedio = numTiempoMedio;
+    }
+
     public BigInteger getNidFuncionalidad() {
         return nidFuncionalidad;
     }
 
     public void setNidFuncionalidad(BigInteger nidFuncionalidad) {
         this.nidFuncionalidad = nidFuncionalidad;
-    }
-
-    public BigInteger getFlgDisponibilidad() {
-        return flgDisponibilidad;
-    }
-
-    public void setFlgDisponibilidad(BigInteger flgDisponibilidad) {
-        this.flgDisponibilidad = flgDisponibilidad;
     }
 
     public BigInteger getFlgActivo() {
