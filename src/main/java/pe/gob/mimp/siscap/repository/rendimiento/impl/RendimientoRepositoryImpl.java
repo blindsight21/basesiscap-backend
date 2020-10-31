@@ -93,9 +93,13 @@ public class RendimientoRepositoryImpl implements CustomRendimientoRepository{
         if (parameters.get("nidRendimiento") != null) {
             whereClause = whereClause + "re.nidRendimiento = :nidRendimiento";
         }
-        if (parameters.get("txtRendimiento") != null) {
+        if (parameters.get("txtNombreMetodo") != null) {
             whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
-            whereClause = whereClause + "re.txtRendimiento = :txtRendimiento";
+            whereClause = whereClause + "re.txtNombreMetodo = :txtNombreMetodo";
+        }
+        if (parameters.get("nidFuncionalidad") != null) {
+            whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
+            whereClause = whereClause + "re.nidFuncionalidad = :nidFuncionalidad";
         }
         if (parameters.get("nidUsuario") != null) {
             whereClause = (!"".equals(whereClause) ? whereClause + " " + CoreConstant.CONDITION_AND + " " : "");
